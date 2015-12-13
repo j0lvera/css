@@ -1,120 +1,116 @@
 ## CSS Style Guide
 
+## Table of contents
+
+1. [Overview](#overview)
+2. [Formatting](#formatting)
+3. [Comments](#comments)
+4. [File Structure](#filestructure)
+4. [Sass](#sass)
+
+## Overview
+
+### Fromatting
+
+- Use 2 spaces, not 4 spaces or tabs.
+- 1 selector or parameter per line.
+- Add a single space after, but not before, the `:` character.
+- Put a space before opening brace `{`
+- Closing brace `}` on its own line.
+- Use hyphens for class names, not underscores or camelCase.
+- Put blank lines between rule declarations
+
 Set colors to lowercase
 
 ```css
 /* Bad */
-.a {
+.selector {
   color: #FFF;
-    background-color: #AAA;
-
+  background-color: #AAA;
 }
 
 /* Good */
-.a {
+.selector {
   color: #fff;
-    background-color: #aaa;
-
+  background-color: #aaa;
 }
 ```
 
 Set block to indent to 2 spaces
 
 ```css
-// Bad
-.a {
+/* Bad */
+.selector {
     color: #fff;
     .b {
-            color: #ccc;
-                
+        color: #ccc;
     }
-
 }
 
-// Bad
-.a {
-    color: #fff;
-    .b {
-            color: #ccc;
-                
-    }
-
-}
-
-// Good
-.a {
+/* Good */
+.selector {
   color: #fff;
   .b {
-      color: #ccc;
-        
+    color: #ccc;
   }
-
 }
 ```
 
 Use shorthands for hexadecimal colors
 
 ```css
-// Bad
-.a {
+/* Bad */
+.selector {
   color: #ffcc00;
     background: #cccccc;
-
 }
 
-// Good
-.a {
+/* Good */
+.selector {
   color: #fc0;
     background: #ccc;
-
 }
 ```
 
 Write selectors in lowercase
 
 ```css
-// Bad
+/* Bad */
 LI > A {
   color: #333;
-
 }
 
-// Good
+/* Good */
 li > a {
   color: #333;
-
 }
 ```
 
 Remove leading zero
 
 ```css
-.a {
+.selector {
   padding: 0.5em;
-    font-size: 0.8em;
-
+  font-size: 0.8em;
 }
 
-.a {
+.selector {
   padding: .5em;
-    font-size: .8em;
-
+  font-size: .8em;
 }
 ```
 
 Use single quotes
 
 ```css
-// Bad
+/* Bad */
 p[href^="https://"]:before {
   content: 'secure';
-
 }
 
-// Good
+/* Good */
 p[href^='https://']:before {
   content: 'secure';
-
 }
 ```
 
@@ -126,6 +122,7 @@ Sort properties following the order:
 4. Visual
 
 ```css
+/* Example */
 .declaration-order {
   position: absolute;
   top: 0;
@@ -145,14 +142,14 @@ Sort properties following the order:
 Remove space before colon
 
 ```css
-// Bad
-.a {
+/* Bad */
+.selector {
   color : #fff;
   top : 0;
 }
 
-// Good
-.a {
+/* Good */
+.selector {
   color: #fff;
   top: 0;
 }
@@ -161,15 +158,15 @@ Remove space before colon
 Add space after colon
 
 ```css
-// Bad
-.a {
-  color:#fff;
+/* Bad */
+.selector {
+  color:#333;
   top:0;
 }
 
-// Good
-.a {
-  color: #fff;
+/* Good */
+.selector {
+  color: #333;
   top: 0;
 }
 ```
@@ -177,13 +174,13 @@ Add space after colon
 Add a line break between declarations 
 
 ```css
-// Bad
-.a {
+/* Bad */
+.selector {
   color: #999; top: 0; height: 0;
 }
 
-// Good
-.a {
+/* Good */
+.selector {
   color: #999;
   top: 0;
   height: 0;
@@ -193,13 +190,13 @@ Add a line break between declarations
 Add a space before open brace
 
 ```css
-// Bad
-.a{
+/* Bad */
+.selector{
   color: #333;
 }
 
-// Good
-.a {
+/* Good */
+.selector {
   color: #333;
 }
 ```
@@ -207,12 +204,12 @@ Add a space before open brace
 Add a line break after opening brace
 
 ```css
-// Bad
-.a { color: #333;
+/* Bad */
+.selector { color: #333;
 }
 
-// Good
-.a { 
+/* Good */
+.selector { 
   color: #333;
 }
 ```
@@ -220,12 +217,12 @@ Add a line break after opening brace
 Add a line break before closing brace
 
 ```css
-// Bad
-.a {
+/* Bad */
+.selector {
   color: #fff; }
 
-// Good
-.a {
+/* Good */
+.selector {
   color: #fff;
 }
 ```
@@ -233,13 +230,13 @@ Add a line break before closing brace
 Add a line break after selector delimiter
 
 ```css
-// Bad
-.a, .b {
+/* Bad */
+.selector, .b {
   color: #333;
 }
 
-// Good
-.a,
+/* Good */
+.selector,
 .b {
   color: #333;
 }
@@ -248,13 +245,129 @@ Add a line break after selector delimiter
 Remove units in zero-valued dimensions
 
 ```css
-// Bad
-.a {
+/* Bad */
+.selector {
   border: 0px;
 }
 
-// Good
-.a {
+/* Good */
+.selector {
   border: 0;
+}
+```
+
+## Comments
+
+- Comments in their on line. Avoid end-of-line comments.
+- Keep line-length to 80 columns.
+
+```css
+/**
+ * Document title with a short description
+ *
+ * Donec id elit non mi porta gravida at eget metus. 
+ */
+
+/*
+ * Section comment block
+ */
+
+/* 
+ * Section comment block with a short description
+ *
+ * Donec id elit non mi porta gravida at eget metus. 
+ */
+
+/* Basic comment */
+```
+
+## File Structure
+
+```scss
+// Utils
+@import "utils/variables";
+@import "utils/utils";
+
+// Base
+@import "base/base";
+@import "base/forms";
+@import "base/typo";
+@import "base/tables";
+
+// Components
+@import "components/buttons";
+@import "components/feedback";
+@import "components/icons";
+@import "components/images";
+@import "components/navigation";
+
+// Layout
+@import "layout/footer";
+@import "layout/grid";
+@import "layout/header";
+@import "layout/main";
+@import "layout/sidebar";
+
+// Pages
+@import "pages/home”;
+@import "pages/contact”;
+
+// Anything that can be categorized later
+@import “todo”;
+```
+
+## Sass
+
+Order extend/inheritance by:
+
+- `@extend`s
+- `@include`s
+- Regular styles
+- Nested pseudo classes and pseudo elements
+- Nested selectors
+
+```scss
+.selector {
+  @extend %clearfix;
+  @include .module;
+
+  background-color: #fff;
+
+  &:hover {
+    background-color: #eee;
+  }
+
+  &::before {
+    background-color: #ccc;
+  }
+
+  .nested-selector {
+    float: left;
+    display: block;
+  }
+}
+```
+
+Don't hardcode colors, use variables instead:
+
+```scss
+$brand-primary-color: #00f;
+
+.entry-title {
+  color: $brand-primary-color;
+}
+```
+
+Nest your media queries.
+
+```scss
+.selector {
+  float: left;
+  width: 50%;
+
+  @media (min-width: 48em) {
+    float: none;
+    width: 100%;
+  }
 }
 ```
