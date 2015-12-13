@@ -1,26 +1,57 @@
-## CSS Style Guide
+# CSS Style Guide
+
+*An almost reasonable approach to CSS and Sass*
 
 ## Table of contents
 
-1. [Overview](#overview)
+1. [Terminology](#terminology)
 2. [Formatting](#formatting)
 3. [Comments](#comments)
-4. [File Structure](#filestructure)
-4. [Sass](#sass)
+4. [File Structure](#file-structure)
+5. [Sass](#sass)
 
-## Overview
+## Terminology
 
-### Fromatting
+### Rule declaration
 
-- Use 2 spaces, not 4 spaces or tabs.
-- 1 selector or parameter per line.
-- Add a single space after, but not before, the `:` character.
-- Put a space before opening brace `{`
-- Closing brace `}` on its own line.
-- Use hyphens for class names, not underscores or camelCase.
-- Put blank lines between rule declarations
+A “rule declaration” is the name given to a selector (or a group of selectors) with an accompanying group of properties.
 
-Set colors to lowercase
+```css
+.paragraph {
+  font-size: 18px;
+  line-height: 1.5;
+}
+```
+
+### Selectors
+
+In a rule declaration, “selectors” determine which elements in the DOM tree will be styled by the properties. Selectors can match HTML elements, as well as a class, ID, or any of its attributes.
+
+```css
+.selector {
+  /* ... */
+
+}
+
+[aria-hidden] {
+  /* ... */
+}
+```
+
+### Properties
+
+Properties are what give the selected elements of a rule declaration their style. Properties are key-value pairs, and a rule declaration can contain one or more property declarations.
+
+```css
+/* some selector */ {
+  background: #fff;
+  color: #333;
+}
+```
+
+## Formatting
+
+Write colors in lowercase.
 
 ```css
 /* Bad */
@@ -36,7 +67,7 @@ Set colors to lowercase
 }
 ```
 
-Set block to indent to 2 spaces
+Indent with 2 spaces, not 4 spaces or tabs.
 
 ```css
 /* Bad */
@@ -56,7 +87,7 @@ Set block to indent to 2 spaces
 }
 ```
 
-Use shorthands for hexadecimal colors
+Use shorthands for hexadecimal colors.
 
 ```css
 /* Bad */
@@ -72,7 +103,7 @@ Use shorthands for hexadecimal colors
 }
 ```
 
-Write selectors in lowercase
+Write selectors in lowercase.
 
 ```css
 /* Bad */
@@ -86,21 +117,23 @@ li > a {
 }
 ```
 
-Remove leading zero
+Remove leading zero.
 
 ```css
+/* Bad */
 .selector {
   padding: 0.5em;
   font-size: 0.8em;
 }
 
+/* Good */
 .selector {
   padding: .5em;
   font-size: .8em;
 }
 ```
 
-Use single quotes
+Use single quotes.
 
 ```css
 /* Bad */
@@ -122,24 +155,30 @@ Sort properties following the order:
 4. Visual
 
 ```css
-/* Example */
 .declaration-order {
+  /* Position */
   position: absolute;
   top: 0;
   right: 0;
+
+  /* Box model */
   display: block;
   float: right;
   width: 6em;
+
+  /* Typographic */
   font: normal 13px "Helvetica Neue", sans-serif;
   line-height: 1.5;
   color: #333;
+
+  /* Visual */
   background-color: #f5f5f5;
   border: 1px solid #e5e5e5;
   opacity: 1;
 }
 ```
 
-Remove space before colon
+Remove space before colon.
 
 ```css
 /* Bad */
@@ -155,7 +194,7 @@ Remove space before colon
 }
 ```
 
-Add space after colon
+Add space after colon.
 
 ```css
 /* Bad */
@@ -171,7 +210,7 @@ Add space after colon
 }
 ```
 
-Add a line break between declarations 
+Add a line break between declarations.
 
 ```css
 /* Bad */
@@ -187,7 +226,7 @@ Add a line break between declarations
 }
 ```
 
-Add a space before open brace
+Add a space before open brace.
 
 ```css
 /* Bad */
@@ -201,29 +240,19 @@ Add a space before open brace
 }
 ```
 
-Add a line break after opening brace
+Add a line break before and after opening brace.
 
 ```css
 /* Bad */
 .selector { color: #333;
 }
 
+.selector {
+  color: #333; }
+
 /* Good */
 .selector { 
   color: #333;
-}
-```
-
-Add a line break before closing brace
-
-```css
-/* Bad */
-.selector {
-  color: #fff; }
-
-/* Good */
-.selector {
-  color: #fff;
 }
 ```
 
@@ -261,7 +290,13 @@ Remove units in zero-valued dimensions
 - Comments in their on line. Avoid end-of-line comments.
 - Keep line-length to 80 columns.
 
+Usage:
+
 ```css
+/**
+ * Document title
+ */
+
 /**
  * Document title with a short description
  *
@@ -309,12 +344,38 @@ Remove units in zero-valued dimensions
 @import "layout/sidebar";
 
 // Pages
-@import "pages/home”;
+@import "pages/home";
 @import "pages/contact”;
 
 // Anything that can be categorized later
 @import “todo”;
 ```
+
+## `utils/`
+
+Here are the files that have functions, mixins, extends, or classes that we use more than once in different folders.
+
+## `base/`
+
+Basic styles like `html`, `body`, `p`, and `a` tags.
+
+## `components/`
+
+UI components that can be used to build layouts
+
+## `layout/`
+
+Header, footer, sidebar and other elements that makes the site structure.
+
+Layouts are built with components. We code the header with the `.site-logo`, `.site-navigation`, and `.social-icons` components and make them work together inside the `_header.scss` layout.
+
+## `pages/`
+
+Styles for specific pages:
+
+- `_home.scss`
+- `_contact.scss`
+- `_portfolio.scss`
 
 ## Sass
 
@@ -327,6 +388,7 @@ Order extend/inheritance by:
 - Nested selectors
 
 ```scss
+// Example
 .selector {
   @extend %clearfix;
   @include .module;
@@ -351,6 +413,12 @@ Order extend/inheritance by:
 Don't hardcode colors, use variables instead:
 
 ```scss
+// Bad
+.entry-title {
+  color: $00f;
+}
+
+// Good
 $brand-primary-color: #00f;
 
 .entry-title {
@@ -361,6 +429,22 @@ $brand-primary-color: #00f;
 Nest your media queries.
 
 ```scss
+// Bad
+.selector {
+  float: left;
+  width: 50%;
+}
+
+// End of file 
+@media (min-width: 48em) {
+  .selector {
+    float: left;
+    width: 50%;
+  }
+}
+
+
+// Good
 .selector {
   float: left;
   width: 50%;
