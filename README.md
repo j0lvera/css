@@ -2,6 +2,13 @@
 
 *An almost reasonable approach to CSS and Sass*
 
+With content and examples stolen from:
+
+- [Airbnb CSS / Sass Styleguide](https://github.com/airbnb/css)
+- [Idiomatic CSS](https://github.com/necolas/idiomatic-css)
+- [CSS-Tricks Style Guide](https://css-tricks.com/css-style-guides/)
+- [CSSComb](http://csscomb.com/)
+
 ## Table of contents
 
 1. [Terminology](#terminology)
@@ -178,7 +185,7 @@ Sort properties following the order:
 }
 ```
 
-Remove space before colon.
+Add a space after colon, but not before.
 
 ```css
 /* Bad */
@@ -187,16 +194,6 @@ Remove space before colon.
   top : 0;
 }
 
-/* Good */
-.selector {
-  color: #fff;
-  top: 0;
-}
-```
-
-Add space after colon.
-
-```css
 /* Bad */
 .selector {
   color:#333;
@@ -205,7 +202,7 @@ Add space after colon.
 
 /* Good */
 .selector {
-  color: #333;
+  color: #fff;
   top: 0;
 }
 ```
@@ -247,6 +244,7 @@ Add a line break before and after opening brace.
 .selector { color: #333;
 }
 
+/* Bad */
 .selector {
   color: #333; }
 
@@ -315,67 +313,6 @@ Usage:
 
 /* Basic comment */
 ```
-
-## File Structure
-
-```scss
-// Utils
-@import "utils/variables";
-@import "utils/utils";
-
-// Base
-@import "base/base";
-@import "base/forms";
-@import "base/typo";
-@import "base/tables";
-
-// Components
-@import "components/buttons";
-@import "components/feedback";
-@import "components/icons";
-@import "components/images";
-@import "components/navigation";
-
-// Layout
-@import "layout/footer";
-@import "layout/grid";
-@import "layout/header";
-@import "layout/main";
-@import "layout/sidebar";
-
-// Pages
-@import "pages/home";
-@import "pages/contact”;
-
-// Anything that can be categorized later
-@import “todo”;
-```
-
-## `utils/`
-
-Here are the files that have functions, mixins, extends, or classes that we use more than once in different folders.
-
-## `base/`
-
-Basic styles like `html`, `body`, `p`, and `a` tags.
-
-## `components/`
-
-UI components that can be used to build layouts
-
-## `layout/`
-
-Header, footer, sidebar and other elements that makes the site structure.
-
-Layouts are built with components. We code the header with the `.site-logo`, `.site-navigation`, and `.social-icons` components and make them work together inside the `_header.scss` layout.
-
-## `pages/`
-
-Styles for specific pages:
-
-- `_home.scss`
-- `_contact.scss`
-- `_portfolio.scss`
 
 ## Sass
 
@@ -455,3 +392,64 @@ Nest your media queries.
   }
 }
 ```
+
+## File Structure
+
+```scss
+// Utils
+@import "utils/variables";
+@import "utils/utils";
+
+// Base
+@import "base/base";
+@import "base/forms";
+@import "base/typo";
+@import "base/tables";
+
+// Components
+@import "components/buttons";
+@import "components/feedback";
+@import "components/icons";
+@import "components/images";
+@import "components/navigation";
+
+// Layout
+@import "layout/footer";
+@import "layout/grid";
+@import "layout/header";
+@import "layout/main";
+@import "layout/sidebar";
+
+// Pages
+@import "pages/home";
+@import "pages/contact”;
+
+// Anything that can be categorized later
+@import “todo”;
+```
+
+### `utils/`
+
+Here are the files that have functions, mixins, extends, or classes that we use more than once in different folders.
+
+### `base/`
+
+Basic styles like `html`, `body`, `p`, and `a` tags.
+
+### `components/`
+
+UI components that can be used to build layouts
+
+### `layout/`
+
+Header, footer, sidebar and other elements that makes the site structure.
+
+Layouts are built with components. We code the header with the `.site-logo`, `.site-navigation`, and `.social-icons` components and make them work together inside the `_header.scss` layout.
+
+### `pages/`
+
+Styles for specific pages:
+
+- `_home.scss`
+- `_contact.scss`
+- `_portfolio.scss`
