@@ -100,13 +100,13 @@ Use shorthands for hexadecimal colors.
 /* Bad */
 .selector {
   color: #ffcc00;
-    background: #cccccc;
+  background: #cccccc;
 }
 
 /* Good */
 .selector {
   color: #fc0;
-    background: #ccc;
+  background: #ccc;
 }
 ```
 
