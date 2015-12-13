@@ -14,8 +14,8 @@ With content and examples stolen from:
 1. [Terminology](#terminology)
 2. [Formatting](#formatting)
 3. [Comments](#comments)
-4. [File Structure](#file-structure)
-5. [Sass](#sass)
+3. [Sass](#sass)
+5. [File Structure](#file-structure)
 
 ## Terminology
 
