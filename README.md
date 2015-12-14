@@ -144,7 +144,7 @@ Use single quotes.
 
 ```css
 /* Bad */
-p[href^="https://"]:before {
+p[href^='https://']:before {
   content: 'secure';
 }
 
@@ -174,7 +174,7 @@ Sort properties following the order:
   width: 6em;
 
   /* Typographic */
-  font: normal 13px "Helvetica Neue", sans-serif;
+  font: normal 13px 'Helvetica Neue', sans-serif;
   line-height: 1.5;
   color: #333;
 
@@ -397,32 +397,32 @@ Nest your media queries.
 
 ```scss
 // Utils
-@import "utils/variables";
-@import "utils/utils";
+@import 'utils/variables';
+@import 'utils/utils';
 
 // Base
-@import "base/base";
-@import "base/forms";
-@import "base/typo";
-@import "base/tables";
+@import 'base/base';
+@import 'base/forms';
+@import 'base/typo';
+@import 'base/tables';
 
 // Components
-@import "components/buttons";
-@import "components/feedback";
-@import "components/icons";
-@import "components/images";
-@import "components/navigation";
+@import 'components/buttons';
+@import 'components/feedback';
+@import 'components/icons';
+@import 'components/images';
+@import 'components/navigation';
 
 // Layout
-@import "layout/footer";
-@import "layout/grid";
-@import "layout/header";
-@import "layout/main";
-@import "layout/sidebar";
+@import 'layout/footer';
+@import 'layout/grid';
+@import 'layout/header';
+@import 'layout/main';
+@import 'layout/sidebar';
 
 // Pages
-@import "pages/home";
-@import "pages/contact”;
+@import 'pages/home';
+@import 'pages/contact';
 
 // Anything that can be categorized later
 @import “todo”;
