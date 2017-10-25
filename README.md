@@ -2,7 +2,7 @@
 
 *An almost reasonable approach to CSS and Sass*
 
-With content and examples stolen from:
+With content and examples <strike>stolen</strike> inspired from:
 
 - [Airbnb CSS / Sass Styleguide](https://github.com/airbnb/css)
 - [Idiomatic CSS](https://github.com/necolas/idiomatic-css)
@@ -50,7 +50,7 @@ In a rule declaration, “selectors” determine which elements in the DOM tree 
 Properties are what give the selected elements of a rule declaration their style. Properties are key-value pairs, and a rule declaration can contain one or more property declarations.
 
 ```css
-/* some selector */ {
+/* Some selector */ {
   background: #fff;
   color: #333;
 }
@@ -254,7 +254,7 @@ Add a line break before and after opening brace.
 }
 ```
 
-Add a line break after selector delimiter
+Add a line break after selector delimiter.
 
 ```css
 /* Bad */
@@ -269,7 +269,7 @@ Add a line break after selector delimiter
 }
 ```
 
-Remove units in zero-valued dimensions
+Remove units in zero-valued dimensions.
 
 ```css
 /* Bad */
@@ -287,8 +287,6 @@ Remove units in zero-valued dimensions
 
 - Comments in their on line. Avoid end-of-line comments.
 - Keep line-length to 80 columns.
-
-Usage:
 
 ```css
 /**
@@ -347,7 +345,7 @@ Order extend/inheritance by:
 }
 ```
 
-Don't hardcode colors, use variables instead:
+Don't hardcode colors, use variables instead.
 
 ```scss
 // Bad
